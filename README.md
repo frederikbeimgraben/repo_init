@@ -3,7 +3,7 @@ Initializes a new Python project including style guidelines and environment setu
 
 ## Usage
 ```bash
-python3 project_creator.py [project_name] [--pyversion=3.8] [--envname=project_name]
+python3 build.py [project_name] [--pyversion=3.10] [--envname=project_name]
 ```
 
 ## Future Goals
