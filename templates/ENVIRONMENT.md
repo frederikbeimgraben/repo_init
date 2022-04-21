@@ -6,9 +6,9 @@
 ## Set up Environment *(from conda prompt)*
 ```bash
 # Create a conda environment
-conda create -n {{PACKAGENAME_LC}} python=3.8
+conda create -n {{PROJECTNAME_LC}} python=3.8
 # Activate the environment
-conda activate {{PACKAGENAME_LC}}
+conda activate {{PROJECTNAME_LC}}
 # Install the required packages
 conda env update --file environment.yml --prune
 # (This will take a while)
@@ -17,7 +17,7 @@ conda env update --file environment.yml --prune
 ## Add Packages to Environment
 ## Edit `environment.yml`
 ```yml
-name: {{PACKAGENAME_LC}}
+name: {{PROJECTNAME_LC}}
 dependencies:
   ...
   # Add your conda packages here
@@ -31,7 +31,7 @@ dependencies:
 ## Install changes
 ```bash
 # Activate the environment
-conda activate {{PACKAGENAME_LC}}
+conda activate {{PROJECTNAME_LC}}
 # Install Packages
 conda env update --file environment.yml --prune
 ```

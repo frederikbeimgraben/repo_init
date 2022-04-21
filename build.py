@@ -86,11 +86,11 @@ def make_env_md(env_name: str, env_path: str) -> str:
     env_name = make_fs_compatible(env_name)
 
     # Load the environment template
-    with open(os.path.join(get_templates_path(), 'env.md'), 'r') as f:
+    with open(os.path.join(get_templates_path(), 'environment.md'), 'r') as f:
         env_template = f.read()
 
     # Replace the template variables
-    env_template = env_template.replace('{{PACKAGENAME_LC}}', env_name)
+    env_template = env_template.replace('{{PROJECTNAME_LC}}', env_name)
 
     # Return the environment template
     return env_template
@@ -111,8 +111,8 @@ def make_style_md(project_name: str, project_name_lc: str) -> str:
         style_template = f.read()
 
     # Replace the template variables
-    style_template = style_template.replace('{{PACKAGENAME}}', project_name)
-    style_template = style_template.replace('{{PACKAGENAME_LC}}', project_name_lc)
+    style_template = style_template.replace('{{PROJECTNAME}}', project_name)
+    style_template = style_template.replace('{{PROJECTNAME_LC}}', project_name_lc)
 
     # Insert Examples
     for example in ['init.py', 'module.py', 'script.py']:
@@ -136,7 +136,7 @@ def make_readme_md(project_name: str) -> str:
         readme_template = f.read()
 
     # Replace the template variables
-    readme_template = readme_template.replace('{{PACKAGENAME}}', project_name)
+    readme_template = readme_template.replace('{{PROJECTNAME}}', project_name)
 
     # Return the readme template
     return readme_template
@@ -162,8 +162,8 @@ def make_env_yml(env_name: str, pyversion: str) -> str:
         env_yml = f.read()
 
     # Insert into the environment template
-    env_yml = insert_from_file(env_yml, '{{PROJECTNAME}}', env_name)
-    env_yml = insert_from_file(env_yml, '{{PYVERSION}}', pyversion)
+    env_yml = env_yml.replace('{{PROJECTNAME}}', env_name)
+    env_yml = env_yml.replace('{{PYVERSION}}', pyversion)
 
     # Return the environment template
     return env_yml
@@ -199,11 +199,12 @@ def build_project(project_name: str) -> None:
             os.mkdir('./build')
         os.chdir(os.path.join(cwd, 'build'))
 
-        project_path = os.path.join(cwd, project_dir_name)
+        project_path = os.path.join(cwd, 'build', project_dir_name)
 
 
-    # Create the project directory
-    os.mkdir(project_path)
+    # Create the project directory if it doesn't exist
+    if not os.path.exists(project_path):
+        os.mkdir(project_path)
 
     # Change to the project directory
     os.chdir(project_path)
@@ -224,11 +225,13 @@ def build_project(project_name: str) -> None:
     with open('environment.yml', 'w') as f:
         f.write(make_env_yml(project_name, '3.7'))
 
-    # Create src directory
-    os.mkdir('src')
+    # Create src directory if it doesn't exist
+    if not os.path.exists('src'):
+        os.mkdir('src')
 
-    # Create src/{project_dir_name} directory
-    os.mkdir(os.path.join('src', project_dir_name))
+    # Create src/{project_dir_name} directory if it doesn't exist
+    if not os.path.exists(os.path.join('src', project_dir_name)):
+        os.mkdir(os.path.join('src', project_dir_name))
 
     # Copy .gitignore
     shutil.copy(os.path.join(get_templates_path(), '.gitignore'), '.')
