@@ -1,0 +1,4 @@
+# {PACKAGENAME_LC}
+
+## Development
+> Be sure to check out the Style Guide and the Environment Guide. (STYLE.md, ENVIRONMENT.md)

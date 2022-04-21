@@ -1,0 +1,7 @@
+name: {{PROJECTNAME}}
+channels:
+  - defaults
+dependencies:
+  - python={{PYVERSION}}
+  - pip:
+    - numpy
