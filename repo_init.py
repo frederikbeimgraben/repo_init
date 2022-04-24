@@ -10,6 +10,14 @@ import os
 from languages.python import Python
 from languages import languages
 
+BLUE = "\033[94m"
+GREEN = "\033[92m"
+CLEAN = "\033[0m"
+ICON_SAVED = GREEN + "✓" + CLEAN
+
+def print_written(file_path):
+    print(f"{BLUE}{ICON_SAVED} {BLUE}{file_path}{CLEAN}")
+
 def main():
     # Setup the parser
     parser = argparse.ArgumentParser(description="Initialize a new repo.")
@@ -57,6 +65,15 @@ def main():
         cwd = os.getcwd()
         # Get file path
         file_path = os.path.join(cwd, template.target)
+        # If the file exists in subfolders, create them if they don't exist
+        if "/" in template.target:
+            sub_dir = os.path.dirname(file_path)
+            if not os.path.exists(sub_dir):
+                os.makedirs(sub_dir)
+        # Get Path relative to cwd
+        rel_path = os.path.relpath(file_path, cwd)
         # Write file
         with open(file_path, "w") as f:
             f.write(baked)
+
+        print_written(rel_path)

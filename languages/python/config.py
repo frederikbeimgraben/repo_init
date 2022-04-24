@@ -130,12 +130,12 @@ TEMPLATES = {
         },
         "location": "environment.yml",
     },
-    "main.py": {
-        "template_path": os.path.join(TEMPLATE_PATH, "main.py.template"),
+    "__init__.py": {
+        "template_path": os.path.join(TEMPLATE_PATH, "init.py.template"),
         "variables": {
             "project_name": "{{project_name}}",
         },
-        "location": "main.py",
+        "location": "src/__init__.py",
     },
 }
 
