@@ -34,6 +34,13 @@ def main():
                     type=value["type"][0] if type(value["type"]) == type else None,
                     choices=value["type"] if str in [type(v) for v in value["type"]] else None,
                 )
+            elif value["type"][0] == bool:
+                subparser.add_argument(
+                    *value["flags"],
+                    help=value["help"],
+                    action="store_true" if value["default"] else "store_false",
+                    required=value["required"],
+                )
             else:
                 subparser.add_argument(
                     *value["flags"],
@@ -56,9 +63,13 @@ def main():
     # Get Templates
     templates = language_obj.templates
 
+
+    print(args)
     # Bake templates
     for _, template in templates.items():
         if not template.target:
+            continue
+        if template.target == ".gitignore" and args.no_gitignore:
             continue
         baked = template.bake_template()
         # Get cwd
