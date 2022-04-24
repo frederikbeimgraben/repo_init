@@ -23,7 +23,7 @@
 > For more information, consider the [pip documentation](https://packaging.python.org/en/latest/tutorials/packaging-projects/).
 
 ## Coding Style
-### Example package __init__.py
+### Example package \_\_init\_\_.py
 
 ```py
 {{init.py}}
