@@ -1,4 +1,4 @@
-# Style conventions for {{PROJECTNAME}}
+# Style conventions for {{project_name}}
 
 ## Project Structure
 ```py
@@ -13,7 +13,7 @@
         │   run.py          # Main script (to run without compilation)
         │   setup.py        # Setup Project (will later be exportable as .exe)
         │
-        └───{{PROJECTNAME_LC}}
+        └───{{project_name}}
             ├───__init__.py # For importing the project
             ├───main.py     # Main script (to be used as the compiled executables entry point)
             │

@@ -1,0 +1,27 @@
+"""
+Build the package.
+
+{{description}}
+"""
+
+from setuptools import setup, find_packages
+import os
+
+# Get the packaage path
+here = os.path.abspath(os.path.dirname(__file__))
+
+setup(
+    name="{{project_name}}",
+    version="",
+    author="",
+    author_email="",
+    packages=find_packages(),
+    description="{{description}}",
+    long_description=open(os.path.join(here, "README.md")).read(),
+    long_description_content_type="text/markdown",
+    url="",
+    classifiers=[
+        "Programming Language :: Python :: 3",
+    ],
+    python_requires=">={{version}}"
+)

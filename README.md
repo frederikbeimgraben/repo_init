@@ -1,14 +1,7 @@
-# Python Default Project Creator
-Initializes a new Python project including style guidelines and environment setup guide.
+# Default Repo config Creator
 
-## Usage
-```bash
-python3 build.py [project_name] [--pyversion=3.10] [--envname=project_name]
-```
-
-## Future Goals
-- [ ] Add support for other languages
-- [ ] Add support for other project types
-- [ ] Add support for other environments
-
-## Feel free to contribute new ideas or post issues
+Scripts:
+>    repo_init.py:
+>>        Initializes a new repo.
+>>
+>>        `python repo_init.py <project_name> <language> [--at <path>] [--no-gitignore] <language_args>`
