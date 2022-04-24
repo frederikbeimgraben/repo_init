@@ -134,6 +134,7 @@ TEMPLATES = {
         "template_path": os.path.join(TEMPLATE_PATH, "init.py.template"),
         "variables": {
             "project_name": "{{project_name}}",
+            "description": "{{description}}",
         },
         "location": "src/__init__.py",
     },
